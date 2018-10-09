@@ -126,9 +126,6 @@ public class MainActivity extends AppCompatActivity {
         } else if (modelArrayList.size() == 3) {
             staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(staggeredGridLayoutManager);
-        } else if (modelArrayList.size() == 4) {
-            staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-            recyclerView.setLayoutManager(staggeredGridLayoutManager);
         } else {
             staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.HORIZONTAL);
             recyclerView.setLayoutManager(staggeredGridLayoutManager);

@@ -73,22 +73,15 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 cellForItemOne(itemHolder);
             } else {
                 if (isEven) {
-                    if (modelArrayList.size() == SIZE_2) {
+                    if (modelArrayList.size() == SIZE_2)
                         cellForItemsTwo(pos, itemHolder);
-                    } else {
-                        if (modelArrayList.size() == SIZE_4) {
-                            cellForItemsFour(pos, itemHolder);
-                        } else {
-                            cellForItemsEven(pos, itemHolder);
-                        }
-                    }
+                    else
+                        cellForItemsEven(pos, itemHolder);
                 } else {
-                    if (modelArrayList.size() == SIZE_3) {
+                    if (modelArrayList.size() == SIZE_3)
                         cellForItemsThree(pos, itemHolder);
-                    } else {
+                    else
                         cellForItemsOdd(pos, itemHolder);
-                    }
-
                 }
             }
         }
@@ -159,7 +152,7 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         } else {
             DisplayMetrics displayMetrics = new DisplayMetrics();
             mContext.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-            int screenWidth = ((displayMetrics.widthPixels) / 2)-getPixelFromDips(mContext,8);
+            int screenWidth = ((displayMetrics.widthPixels) / 2) - getPixelFromDips(mContext, 8);
             LinearLayout.LayoutParams layoutParamsItems = new LinearLayout.LayoutParams(screenWidth,
                     holder.ivLogo.getLayoutParams().height);
 
@@ -170,52 +163,6 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 setItemsMargin(layoutParamsItems, 8, 4, 4, 8);
                 holder.ivLogo.setLayoutParams(layoutParamsItems);
             }
-        }
-    }
-
-    /**
-     * This method is only for four Item when we need to show only four Item in our Grid
-     *
-     * @param holder
-     */
-    private void cellForItemsFour(int pos, MyViewHolder holder) {
-        holder.llParent.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
-        if (pos == 0) {
-            holder.llParent.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
-            LinearLayout.LayoutParams layoutParamsItems = new LinearLayout.LayoutParams(
-                    holder.ivLogo.getLayoutParams().width,
-                    holder.ivLogo.getLayoutParams().height
-            );
-            setItemsMargin(layoutParamsItems, 8, 8, 4, 4);
-            holder.ivLogo.setLayoutParams(layoutParamsItems);
-
-        } else if (pos == 1) {
-            holder.llParent.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
-            LinearLayout.LayoutParams layoutParamsItems = new LinearLayout.LayoutParams(holder.ivLogo.getLayoutParams().width,
-                    holder.ivLogo.getLayoutParams().height);
-            setItemsMargin(layoutParamsItems, 4, 8, 8, 4);
-            holder.ivLogo.setLayoutParams(layoutParamsItems);
-
-        } else if (pos == 2) {
-            holder.llParent.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
-            LinearLayout.LayoutParams layoutParamsItems = new LinearLayout.LayoutParams(
-                    holder.ivLogo.getLayoutParams().width,
-                    holder.ivLogo.getLayoutParams().height
-            );
-
-            setItemsMargin(layoutParamsItems, 8, 4, 4, 8);
-            holder.ivLogo.setLayoutParams(layoutParamsItems);
-
-        } else if (pos == 3) {
-            holder.llParent.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
-            LinearLayout.LayoutParams layoutParamsItems = new LinearLayout.LayoutParams(
-                    holder.ivLogo.getLayoutParams().width,
-                    holder.ivLogo.getLayoutParams().height
-            );
-
-            setItemsMargin(layoutParamsItems, 4, 4, 8, 8);
-
-            holder.ivLogo.setLayoutParams(layoutParamsItems);
         }
     }
 
@@ -298,7 +245,10 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         holder.llParent.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
         DisplayMetrics displayMetrics = new DisplayMetrics();
         mContext.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        screenWidth = ((displayMetrics.widthPixels) / 2);
+        if (modelArrayList.size() == SIZE_4)
+            screenWidth = ((displayMetrics.widthPixels) / 2) - getPixelFromDips(mContext, 12);
+        else
+            screenWidth = ((displayMetrics.widthPixels) / 2);
 
         LinearLayout.LayoutParams layoutParamsItems = new LinearLayout.LayoutParams(
                 screenWidth,
