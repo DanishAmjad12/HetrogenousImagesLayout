@@ -77,12 +77,8 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         cellForItemsTwo(pos, itemHolder);
                     else
                         cellForItemsEven(pos, itemHolder);
-                } else {
-                    if (modelArrayList.size() == SIZE_3)
-                        cellForItemsThree(pos, itemHolder);
-                    else
-                        cellForItemsOdd(pos, itemHolder);
-                }
+                } else
+                    cellForItemsOdd(pos, itemHolder);
             }
         }
     }
@@ -175,7 +171,10 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         holder.llParent.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
         DisplayMetrics displayMetrics = new DisplayMetrics();
         mContext.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        screenWidth = ((displayMetrics.widthPixels) / 2);
+        if (modelArrayList.size() == 3)
+            screenWidth = ((displayMetrics.widthPixels) / 2)-getPixelFromDips(mContext,12);
+        else
+            screenWidth = ((displayMetrics.widthPixels) / 2);
 
         if (pos == 0) {
             holder.llParent.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
