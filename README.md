@@ -1,6 +1,6 @@
 # HetrogenousLayout
 
-This Project is basically based on hetrogenous layout using StaggeredLayout.
+💻 This Project is basically based on hetrogenous layout using StaggeredLayout.
 
 # Conditions which Caterd in this Project
 
